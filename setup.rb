@@ -14,7 +14,7 @@ ActiveRecord::Base.establish_connection(
   password: 'development',
   host: 'localhost',
   port: 5432,
-  pool: 5,
+  pool: 5, # maintain no more than 5 connections
   encoding: 'unicode',
   min_messages: 'error'
 )
