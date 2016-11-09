@@ -10,3 +10,9 @@ puts 'Exercise 7'
 puts '----------'
 
 # Your code goes here ...
+puts 'Please enter the store name'
+print '> '
+user_input = gets.chomp
+new_store = Store.create(name: user_input)
+error_messages = new_store.errors.messages
+puts "Error: #{error_messages}" unless error_messages.empty?
