@@ -9,13 +9,19 @@ class Store < ActiveRecord::Base
 
   # Callback methods register
   validate :must_carry_mens_or_womens_apparel
-
+  before_destroy :check_employees_exist
   # Regular Methods
 
   # Private Methods
   private
 
   def must_carry_mens_or_womens_apparel
-    errors.add(:mens_womens_apparel, 'is both false') unless mens_apparel || womens_apparel
+    return unless mens_apparel == false && womens_apparel == false
+    errors.add(:mens_womens_apparel, 'is both false')
+  end
+
+  def check_employees_exist
+    errors.add(:employees, 'exist in the store') if employees.exists?
+    false
   end
 end
