@@ -15,4 +15,4 @@ print '> '
 user_input = gets.chomp
 new_store = Store.create(name: user_input)
 error_messages = new_store.errors.messages
-puts "Error: #{error_messages}" unless error_messages.empty?
+error_messages.each { |error| puts "Error: #{error}" }
